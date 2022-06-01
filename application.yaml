@@ -9,14 +9,14 @@ spec:
   source:
     repoURL: https://github.com/Abdelmoghit-IDH/Game-Streaming-Deployment.git
     targetRevision: HEAD
-    path: .
+    path: development
   destination: 
     server: https://kubernetes.default.svc  
-    namespace: myapp
+    namespace: production
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+    - CreateNamespace=true #create namespace if not exist
 
     automated:
       selfHeal: true
