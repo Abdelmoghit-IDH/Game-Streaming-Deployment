@@ -8,7 +8,6 @@ spec:
 
   source:
     repoURL: https://github.com/Abdelmoghit-IDH/Game-Streaming-Deployment.git
-    branch: abdelmoghit
     targetRevision: HEAD
     path: development
   destination: 
