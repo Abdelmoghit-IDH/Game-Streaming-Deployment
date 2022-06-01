@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/Abdelmoghit-IDH/Game-Streaming-Deployment.git
+    repoURL: https://gitlab.com/abdelmoghit.idhsaine/Game-Streaming-Deployment.git
     targetRevision: HEAD
     path: development
     directory:
