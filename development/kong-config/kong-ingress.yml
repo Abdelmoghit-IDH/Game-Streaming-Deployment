@@ -1,10 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: signin
+  name: auth-nojwt
   namespace: production
   annotations:
-    konghq.com/plugins: app-jwt
     konghq.com/strip-path: "false"
 
 spec:
@@ -23,10 +22,11 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: update
+  name: auth-jwt-update
   namespace: production
   annotations:
     konghq.com/strip-path: "false"
+    konghq.com/plugins: app-jwt
 
 spec:
   ingressClassName: kong
@@ -34,6 +34,28 @@ spec:
     - http:
         paths:
           - path: /api/auth/signin
+            pathType: Prefix
+            backend:
+              service:
+                name: authservice
+                port:
+                  number: 3001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: auth-jwt-delete
+  namespace: production
+  annotations:
+    konghq.com/plugins: app-jwt
+    konghq.com/strip-path: "false"
+
+spec:
+  ingressClassName: kong
+  rules:
+    - http:
+        paths:
+          - path: /api/auth/user
             pathType: Prefix
             backend:
               service:
