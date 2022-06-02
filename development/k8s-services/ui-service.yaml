@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: prankster08/auth-image:2.0
+          image: prankster08/auth-image:abdelmoghit-39a61491
           ports:
             - containerPort: 3000
 
