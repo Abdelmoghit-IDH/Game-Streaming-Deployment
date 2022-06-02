@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: prankster08/ui-image:hatim-380d5cc5
+          image: prankster08/ui-image:hatim-1d4d5441
           ports:
             - containerPort: 3000
 
