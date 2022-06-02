@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: uiservice
+  name: ui-service
   namespace: production
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: uiservice
+      app: ui-service
   template:
     metadata:
       labels:
-        app: uiservice
+        app: ui-service
     spec:
       containers:
         - name: service
@@ -23,11 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: uiservice
+  name: ui-service
   namespace: production
 spec:
   selector:
-    app: uiservice
+    app: ui-service
   ports:
     - port: 3000
       targetPort: 3000
