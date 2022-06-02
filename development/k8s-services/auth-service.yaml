@@ -17,7 +17,7 @@ spec:
       - name: dockerhubpull
       containers:
         - name: service
-          image: prankster08/auth-image:hatim-b3a86612
+          image: prankster08/auth-image:hatim-efebc7e7
           ports:
             - containerPort: 3001
 ---
