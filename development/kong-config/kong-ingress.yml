@@ -4,6 +4,28 @@ metadata:
   name: signin
   namespace: production
   annotations:
+    konghq.com/plugins: app-jwt
+    konghq.com/strip-path: "false"
+
+spec:
+  ingressClassName: kong
+  rules:
+    - http:
+        paths:
+          - path: /api/auth/
+            pathType: Prefix
+            backend:
+              service:
+                name: authservice
+                port:
+                  number: 3001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: update
+  namespace: production
+  annotations:
     konghq.com/strip-path: "false"
 
 spec:
@@ -18,25 +40,3 @@ spec:
                 name: authservice
                 port:
                   number: 3001
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: update
-  namespace: production
-  annotations:
-    konghq.com/plugins: app-jwt
-    konghq.com/strip-path: "false"
-
-spec:
-  ingressClassName: kong
-  rules:
-    - http:
-        paths:
-          - path: /api/auth/update
-            pathType: Prefix
-            backend:
-              service:
-                name: authservice
-                port:
-                  number: 3000
