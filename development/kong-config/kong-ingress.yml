@@ -33,7 +33,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /api/auth/signin
+          - path: /api/auth/update
             pathType: Prefix
             backend:
               service:
