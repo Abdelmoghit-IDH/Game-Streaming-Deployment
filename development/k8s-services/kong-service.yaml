@@ -15,26 +15,15 @@ spec:
     spec:
       containers:
         - name: kong
-          image: kong/kong-gateway:2.8.1.1-alpine
+          image: kong
           ports:
             - containerPort: 8000
             - containerPort: 8443
             - containerPort: 8001
             - containerPort: 8444
-            - containerPort: 8001
-            - containerPort: 8002
-            - containerPort: 8445
-            - containerPort: 8003
-            - containerPort: 8004
           env:
           - name: KONG_DATABASE
-            value: "postgres"
-          - name: KONG_PG_HOST
-            value: "kong-database"
-          - name: KONG_PG_USER
-            value: "kong"
-          - name: KONG_PG_PASSWORD
-            value: "kongpass"
+            value: "off"
           - name: KONG_PROXY_ACCESS_LOG
             value: "/dev/stdout"
           - name: KONG_ADMIN_ACCESS_LOG
@@ -45,59 +34,3 @@ spec:
             value: "/dev/stderr"
           - name: KONG_ADMIN_LISTEN
             value: "0.0.0.0:8001"
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kong-service
-  namespace: production
-spec:
-  selector:
-    app: kong-service
-  ports:
-    - port: 8001
-      targetPort: 8001
-
----
-### Database postgres kong
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: kong-database
-  namespace: production
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: kong-database
-  template:
-    metadata:
-      labels:
-        app: kong-database
-    spec:
-      containers:
-        - name: postgres-kong
-          image: postgres:9.6
-          ports:
-            - containerPort: 5432
-          env:
-          - name: POSTGRES_USER
-            value: "kong"
-          - name: POSTGRES_DB
-            value: "kong"
-          - name: POSTGRES_PASSWORD
-            value: "kongpass"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kong-database
-  namespace: production
-spec:
-  selector:
-    app: kong-database
-  ports:
-    - port: 5432
-      targetPort: 5432
