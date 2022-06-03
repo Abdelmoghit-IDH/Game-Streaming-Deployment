@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: kong
-          image: prankster08/auth-image:hatim-380d5cc5
+          image: pantsel/konga
           ports:
             - containerPort: 3002
           env:
