@@ -34,3 +34,18 @@ spec:
             value: "/dev/stderr"
           - name: KONG_ADMIN_LISTEN
             value: "0.0.0.0:8001"
+
+---
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kong-service
+  namespace: production
+spec:
+  selector:
+    app: kong-service
+  ports:
+    - port: 8001
+      targetPort: 8001
+  type: LoadBalancer
