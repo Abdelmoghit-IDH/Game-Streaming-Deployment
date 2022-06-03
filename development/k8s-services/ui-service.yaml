@@ -4,7 +4,7 @@ metadata:
   name: ui-service
   namespace: production
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       app: ui-service
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: service
-          image: prankster08/ui-image:hatim-380d5cc5
+          image: prankster08/ui-image:hatim-38e11888
           ports:
             - containerPort: 3000
 
