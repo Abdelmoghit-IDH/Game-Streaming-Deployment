@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: authservice
+  name: auth-service
   namespace: production
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: authservice
+      app: auth-service
   template:
     metadata:
       labels:
-        app: authservice
+        app: auth-service
     spec:
       imagePullSecrets:
       - name: dockerhubpull
@@ -24,11 +24,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: authservice
+  name: auth-service
   namespace: production
 spec:
   selector:
-    app: authservice
+    app: auth-service
   ports:
     - port: 3001
       targetPort: 3001
