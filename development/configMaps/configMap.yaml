@@ -4,4 +4,4 @@ metadata:
   name: config-map
   namespace: production
 data:
-  apiGateway: 10.10.10.10
+  apiGateway: "http://10.10.10.10"

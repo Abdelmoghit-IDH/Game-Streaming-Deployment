@@ -63,7 +63,7 @@ spec:
                 port:
                   number: 3001
           #! Channel microservice
-          - path: /api/channel/createChannel
+          - path: /api/channels/createChannel
             pathType: Prefix
             backend:
               service:
@@ -161,28 +161,28 @@ spec:
                 port:
                   number: 3001
           #! Channel microservice
-          - path: /api/channel/
+          - path: /api/channels/
             pathType: Prefix
             backend:
               service:
                 name: channel-micro
                 port:
                   number: 3002
-          - path: /api/channel/mychannels
+          - path: /api/channels/mychannels
             pathType: Prefix
             backend:
               service:
                 name: channel-micro
                 port:
                   number: 3002
-          - path: /api/channel/subscribe
+          - path: /api/channels/subscribe
             pathType: Prefix
             backend:
               service:
                 name: channel-micro
                 port:
                   number: 3002
-          - path: /api/channel/modify
+          - path: /api/channels/modify
             pathType: Prefix
             backend:
               service:
