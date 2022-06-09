@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ui-service
+  name: ui-micro
   namespace: production
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: ui-service
+      app: ui-micro
   template:
     metadata:
       labels:
-        app: ui-service
+        app: ui-micro
     spec:
       containers:
         - name: service
-          image: prankster08/ui-image:hatim-38e11888
+          image: prankster08/ui-image:latest
           ports:
             - containerPort: 3000
 
@@ -23,11 +23,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ui-service
+  name: ui-micro
   namespace: production
 spec:
   selector:
-    app: ui-service
+    app: ui-micro
   ports:
     - port: 3000
       targetPort: 3000
