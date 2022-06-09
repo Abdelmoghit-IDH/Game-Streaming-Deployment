@@ -15,11 +15,7 @@ spec:
     spec:
       containers:
         - name: service
-<<<<<<< HEAD:development/k8s-micro/ui-service.yaml
           image: prankster08/ui-image:latest
-=======
-          image: prankster08/ui-image:hatim-44d0f6c1
->>>>>>> 1eac7bcc620f5b956b75d979c7a68dd31666fc1e:development/k8s-services/ui-service.yaml
           ports:
             - containerPort: 3000
 
